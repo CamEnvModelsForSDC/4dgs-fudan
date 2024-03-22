@@ -53,11 +53,11 @@ class ModelParams(ParamGroup):
         self._resolution = -1
         self._white_background = False
         self.data_device = "cuda"
-        self.eval = False
-        self.extension = ".png"
+        self.eval = True
+        self.extension = ".jpg"
         self.num_extra_pts = 0
         self.loaded_pth = ""
-        self.frame_ratio = 1
+        self.frame_ratio = 0.5
         self.dataloader = False
         super().__init__(parser, "Loading Parameters", sentinel)
 
@@ -71,10 +71,10 @@ class PipelineParams(ParamGroup):
         self.convert_SHs_python = False
         self.compute_cov3D_python = False
         self.debug = False
-        self.env_map_res = 0
+        self.env_map_res = 500
         self.env_optimize_until = 1000000000
         self.env_optimize_from = 0
-        self.eval_shfs_4d = False
+        self.eval_shfs_4d = True
         super().__init__(parser, "Pipeline Parameters")
 
 class OptimizationParams(ParamGroup):
