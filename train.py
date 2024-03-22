@@ -356,7 +356,7 @@ if __name__ == "__main__":
     lp = ModelParams(parser)
     op = OptimizationParams(parser)
     pp = PipelineParams(parser)
-    parser.add_argument("--config", type=str)
+    # parser.add_argument("--config", type=str)
     parser.add_argument('--debug_from', type=int, default=-1)
     parser.add_argument('--detect_anomaly', action='store_true', default=False)
     parser.add_argument("--test_iterations", nargs="+", type=int, default=[7_000, 30_000])
@@ -377,7 +377,7 @@ if __name__ == "__main__":
     args = parser.parse_args(sys.argv[1:])
     args.save_iterations.append(args.iterations)
         
-    cfg = OmegaConf.load(args.config)
+    #cfg = OmegaConf.load(args.config)
     def recursive_merge(key, host):
         if isinstance(host[key], DictConfig):
             for key1 in host[key].keys():
@@ -385,8 +385,8 @@ if __name__ == "__main__":
         else:
             assert hasattr(args, key), key
             setattr(args, key, host[key])
-    for k in cfg.keys():
-        recursive_merge(k, cfg)
+    #for k in cfg.keys():
+    #    recursive_merge(k, cfg)
         
     if args.exhaust_test:
         args.test_iterations = args.test_iterations + [i for i in range(0,op.iterations,500)]
